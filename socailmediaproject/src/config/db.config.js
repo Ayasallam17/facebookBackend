@@ -21,9 +21,16 @@ db.Sequelize= Sequelize
 
 db.user = require('../models/user')(sequelize , Sequelize)
 db.role = require('../models/role')(sequelize , Sequelize)
-
+db.post = require('../models/post')(sequelize , Sequelize)
+db.comment = require("../models/comment")(sequelize , Sequelize)
 
 db.role.belongsToMany( db.user , { through: "user_roles", foreignKey: "roleId" , otherKey : "userId" } )
 db.user.belongsToMany( db.role , { through: "user_roles", foreignKey: "userId" , otherKey : 'roleId' } )
+
+db.user.hasMany(db.post)
+db.post.belongsTo(db.user , { foreignKey:'userId' })
+
+db.post.hasMany(db.comment)
+db.comment.belongsTo( db.post , {  foreignKey : 'postId' } )
 
 module.exports = db;

@@ -55,11 +55,20 @@ module.exports = (sequelize , Sequelize)=>{
             },
             email:{
                 type:Sequelize.STRING(15),
-                allowNull: false
+                allowNull: false,
+                validate:{
+                    isEmail: {msg: 'this is not email'}
+                }
             },
             password:{
                 type:Sequelize.STRING(100),
-                allowNull: false
+                allowNull: false,
+                validate:{
+                    len: {
+                        args: [3, 20],
+                        msg: 'Password must be between 6 and 20 characters in length.'
+                    }   
+                }
             },  
             imageUrl:{
                 type:Sequelize.STRING(100),
