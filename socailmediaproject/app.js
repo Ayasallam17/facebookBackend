@@ -8,9 +8,9 @@ const routes = require('./src/routers/router')
 const PORT = 3000
 const Role = db.role
 
-// db.sequelize.sync( {alter:true} ).then(  ()=>{
+// db.joinReqests.sync( {force:true} ).then(  ()=>{
 //     console.log('alter table')
-//     initial();
+//     //initial();
 // } )
 
 function initial(){

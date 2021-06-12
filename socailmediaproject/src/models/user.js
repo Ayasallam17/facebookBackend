@@ -63,12 +63,15 @@ module.exports = (sequelize , Sequelize)=>{
             password:{
                 type:Sequelize.STRING(100),
                 allowNull: false,
-                validate:{
-                    len: {
-                        args: [3, 20],
-                        msg: 'Password must be between 6 and 20 characters in length.'
-                    }   
-                }
+                len:{  args: [3, 20],
+                       msg: 'Password must be between 3 and 20 characters in length.'
+                } 
+                // validate:{
+                //     len: [3,6]
+                //        // args: [2, 20],
+                //         //msg: 'Password must be between 3 and 20 characters in length.'
+                //       //}   
+                // }
             },  
             imageUrl:{
                 type:Sequelize.STRING(100),
