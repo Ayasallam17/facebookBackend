@@ -496,7 +496,6 @@ try{
         email:req.body.email,
         password:bcrypt.hashSync(req.body.password , env.bcryptNum)
     })
-    //console.log(user)
     const roles = await Role.findAll({ //return array
         where:{
             name : req.body.roles
@@ -508,13 +507,14 @@ try{
         data : user ,
         message :"user register successfuly"  
     })
-    //console.log(roles)
+    next()
 }catch(e){
     res.status(400).send({
         apistatus :false,
         error : e.message ,
         message :"error in register "
     })
+
 }
 }
 
