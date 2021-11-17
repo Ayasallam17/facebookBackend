@@ -54,7 +54,7 @@ module.exports = (sequelize , Sequelize)=>{
                 allowNull: false
             },
             email:{
-                type:Sequelize.STRING(15),
+                type:Sequelize.STRING(30),  
                 allowNull: false,
                 validate:{
                     isEmail: {msg: 'this is not email'}

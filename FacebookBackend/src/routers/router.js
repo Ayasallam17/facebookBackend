@@ -29,12 +29,12 @@ router.post('/api/auth/signin' , controller.signin)
 router.post('/api/test/user' , [authJwt.verifyToken] )
 router.post('/api/test/admin' , [authJwt.verifyToken , authJwt.isAdmin] ,controller.adminBord)
 
-router.post('/user/addpost', upload.single('post'), controller.addPost)
-router.get('/user/getalluserposts', controller.getAllUserPosts)
-router.post('/user/updatepost', upload.single('post') ,controller.updatePost)
-router.delete('/user/deletepost',controller.deletePost)
+router.post('/user/addpost', authJwt.verifyToken , upload.single('post'), controller.addPost)
+router.get('/user/getalluserposts', authJwt.verifyToken, controller.getAllUserPosts)
+router.post('/user/updatepost', authJwt.verifyToken, upload.single('post') ,controller.updatePost)
+router.delete('/user/deletepost',authJwt.verifyToken, controller.deletePost)
 
-router.post('/user/sharepost' , controller.sharePost)
+router.post('/user/sharepost' , authJwt.verifyToken , controller.sharePost)
 
 router.get("/user/getpostwiththreecomments" , controller.getPostwiththreecomments)
 router.get("/user/getpostwithpaginationcomments", controller.getPostwithPaginationComments)

@@ -12,5 +12,4 @@ const env = {
     },
     bcryptNum: 3  // small number to calculate fast it was slow with us
   };
-   
-  module.exports = env;
+module.exports = env;

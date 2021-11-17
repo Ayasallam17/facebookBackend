@@ -53,7 +53,7 @@ exports.getJoinRequests = async (req , res)=>{
 
 exports.approvejoin = async (req , res)=>{
     try{ // admin approve user join request
-        await joinReqests.destroy({
+        await joinReqests.destroy({   
             where:{
                 userId:req.body.userId,
                 groupId : req.groupId
@@ -403,7 +403,6 @@ exports.updatePost = async (req , res)=>{
 }
 
 exports.addPost = async (req , res)=>{
-    console.log(req.file)
     try{
         if( req.body.content == null && req.file == undefined ){ 
             throw new Error("post can not be empty")
@@ -519,12 +518,13 @@ try{
 }
 
 exports.signin = async (req , res)=>{
-
+    console.log(req.body.email)
     User.findOne({
 		where: {
 			email: req.body.email
 		}
 	}).then(user => {
+        console.log(user) 
 		if (!user) {
 			return res.status(404).send('User Not Found.');
 		}
